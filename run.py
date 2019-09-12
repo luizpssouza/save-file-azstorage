@@ -1,9 +1,15 @@
+import os
+
+from azstorage import save_blob
 from download import download
+from environment import setEnvironmentVariables
 
-def image_process():
+setEnvironmentVariables()
+ 
+def process():
     image_url = "https://www.dev2qa.com/demo/images/green_button.jpg"
-    download(image_url)
-
+    blob = download(image_url)
+    save_blob(blob)
 
 if __name__ == "__main__":
-    image_process()
+    process()
