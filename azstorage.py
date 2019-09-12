@@ -1,8 +1,23 @@
+import io
+from PIL import Image
+from resizeimage import resizeimage
+
 from azure.storage.blob import BlockBlobService, ContentSettings
 
 from environment import Env
 
+
+def resize(blob, size=[50, 50]):
+    img = Image.open(io.BytesIO(blob))
+    img = resizeimage.resize_thumbnail(img, size)
+    imgByteArr = io.BytesIO()
+    img.save(imgByteArr, format='jpeg')
+    return imgByteArr.getvalue()
+
+
 def save_blob(blob):
+    blob = resize(blob, size=[50,50])
+
     block_blob_service = get_blob_service()
     
     env = Env()

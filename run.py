@@ -7,8 +7,9 @@ from environment import setEnvironmentVariables
 setEnvironmentVariables()
  
 def process():
-    image_url = "https://www.dev2qa.com/demo/images/green_button.jpg"
+    image_url = "https://logo.clearbit.com/davidsonhotels.com"
     blob = download(image_url)
+    
     save_blob(blob)
 
 if __name__ == "__main__":
